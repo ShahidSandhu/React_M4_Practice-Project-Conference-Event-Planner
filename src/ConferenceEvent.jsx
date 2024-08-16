@@ -13,10 +13,7 @@ const ConferenceEvent = () => {
   const [numberOfPeople, setNumberOfPeople] = useState(1);
   const venueItems = useSelector((state) => state.venue);
   const dispatch = useDispatch();
-  const remainingAuditoriumQuantity =
-    3 -
-    venueItems.find((item) => item.name === "Auditorium Hall (Capacity:200)")
-      .quantity;
+  // const remainingAuditoriumQuantity = 3 - venueItems.find((item) => item.name === "Auditorium Hall (Capacity:200)").quantity;
 
   const handleToggleItems = () => {
     console.log("handleToggleItems called");
@@ -64,19 +61,6 @@ const ConferenceEvent = () => {
   
   const venueTotalCost = calculateTotalCost("venue");
 
-const calculateTotalCost = (section) => {
-  let totalCost = 0;
-  if (section === "venue") {
-    venueItems.forEach((item) => {
-      totalCost += item.cost * item.quantity;
-    });
-  } else if (section === "av") {
-    avItems.forEach((item) => {
-      totalCost += item.cost * item.quantity;
-    });
-  }
-  return totalCost;
-};
 const avTotalCost = calculateTotalCost("av");
 
   const handleIncrementAvQuantity = (index) => {
@@ -164,16 +148,16 @@ const avTotalCost = calculateTotalCost("av");
     </>
 };
 
-  const calculateTotalCost = (section) => {
-    let totalCost = 0;
-    if (section === "venue") {
-      venueItems.forEach((item) => {
-        totalCost += item.cost * item.quantity;
-      });
-    }
-    return totalCost;
-  };
-  const venueTotalCost = calculateTotalCost("venue");
+  // const calculateTotalCost = (section) => {
+  //   let totalCost = 0;
+  //   if (section === "venue") {
+  //     venueItems.forEach((item) => {
+  //       totalCost += item.cost * item.quantity;
+  //     });
+  //   }
+  //   return totalCost;
+  // };
+  // const venueTotalCost = calculateTotalCost("venue");
 
   const navigateToProducts = (idType) => {
     if (idType == "#venue" || idType == "#addons" || idType == "#meals") {
@@ -299,7 +283,6 @@ const avTotalCost = calculateTotalCost("av");
             <div id="addons" className="venue_container container_main">
               <div className="text">
                 <h1> Add-ons Selection</h1>
-                <div className="total_cost">Total Cost: {avTotalCost}</div>
               </div>
               <div className="addons_selection">
                 {avItems.map((item, index) => (
@@ -329,7 +312,7 @@ const avTotalCost = calculateTotalCost("av");
                   </div>
                 ))}
               </div>
-              <div className="total_cost">Total Cost:</div>
+              <div className="total_cost">Total Cost: {avTotalCost}</div>
             </div>
 
             {/* Meal Section */}

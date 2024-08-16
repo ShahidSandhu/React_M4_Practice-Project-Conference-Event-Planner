@@ -1,5 +1,5 @@
 // mealsSlice.js
-import { createSlice } from "@redux/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 export const mealsSlice = createSlice({
   name: "meals",
